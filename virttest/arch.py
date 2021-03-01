@@ -4,7 +4,7 @@ from avocado.utils import cpu
 
 ARCH = platform.machine()
 
-if ARCH in ('ppc64', 'ppc64le'):
+if ARCH in ('ppc64', 'ppc64le', 'mips64'):
     # From include/linux/sockios.h
     SIOCSIFHWADDR = 0x8924
     SIOCGIFHWADDR = 0x8927
@@ -91,7 +91,7 @@ def get_kvm_module_list():
     elif ARCH in ('ppc64', 'ppc64le'):
         # FIXME: Please correct it if anyone still want to use KVM-PR mode
         return ["kvm", "kvm-hv"]
-    elif ARCH in ('s390', 's390x'):
+    elif ARCH in ('s390', 's390x', 'mips64', 'loongarch64'):
         return ["kvm"]
     elif ARCH == "aarch64":
         return []
